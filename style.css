@@ -1,0 +1,155 @@
+/*
+Theme Name: Total Child Theme
+Theme URI: https://your-site.com
+Description: Your site description. Go to Appearance > Editor to modify this file.
+Author: Your Name
+Author URI: https://your-site.com
+Template: Total
+Version: 1.0
+*/
+
+/* The actual timeline (the vertical ruler) */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  background-color: white;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+/* Container around content */
+.container-fase {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+
+/* The circles on the timeline */
+.container-fase::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  right: -20px;
+  background-color: white;
+  border: 4px solid #ff9f55;
+  top: 40%;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Place the container to the left */
+.left-fase {
+  left: 0;
+}
+
+/* Place the container to the right */
+.right-fase {
+  left: 50%;
+}
+
+/* Add arrows to the left container (pointing right) */
+.left-fase::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 45%;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid white;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right-fase::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 45%;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+/* Fix the circle for containers on the right side */
+.right-fase::after {
+  left: -20px;
+}
+
+/* The actual content */
+.content-fase {
+  padding: 20px 30px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+}
+
+/*Subtitle*/
+.fase-subtitle {
+  position: absolute;
+  font-weight: bold;
+  left: -122px;
+  top: 43%;
+}
+
+.left-fase .fase-subtitle {
+  right: -122px;
+  text-align: right;
+}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+  /* Place the timelime to the left */
+  .timeline::after {
+    left: 31px;
+  }
+
+  /* Full-width containers */
+  .container-fase {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+
+  /* Make sure that all arrows are pointing leftwards */
+  .container-fase::before {
+    left: 60px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+
+  /* Make sure all circles are at the same spot */
+  .left-fase::after,
+  .right-fase::after {
+    left: 12px;
+  }
+
+  /* Make all right containers behave like the left ones */
+  .right-fase {
+    left: 0%;
+  }
+  .fase-subtitle {
+    position: relative;
+    left: 0;
+  }
+  .left-fase .fase-subtitle {
+    text-align: left;
+  }
+}
